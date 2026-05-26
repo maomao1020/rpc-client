@@ -1,0 +1,15 @@
+services:
+  php:
+    image: easy-php:7.4
+    networks:
+      - local_public
+    ports:
+      - "49501:9501"
+    volumes:
+      - ./:/var/www
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+    restart: always
+#Docker Networks
+networks:
+  local_public:
+    external: true
