@@ -27,6 +27,13 @@ return [
         'db'        => 2,
         'serialize' => \EasySwoole\Redis\Config\RedisConfig::SERIALIZE_NONE
     ],
+    'NACOS' =>[
+        'host' => 'nacos-server',
+        'port' => 8848,
+        'dataId' => 'easy',
+        'group' => 'DEFAULT_GROUP',
+        'tenant' => 'public' // 命名空间ID
+    ],
     "LOG" => [
         'dir' => null,
         'level' => LoggerInterface::LOG_LEVEL_DEBUG,

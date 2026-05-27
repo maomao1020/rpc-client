@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a5f1b7ad1ce4db606fa392366b07ae6",
+    "content-hash": "9d68ce39355eac4c9eddd6d7163f7eae",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -292,6 +292,63 @@
                 "source": "https://github.com/easy-swoole/annotation/tree/2.x"
             },
             "time": "2020-08-28T03:22:36+00:00"
+        },
+        {
+            "name": "easyswoole/atomic-limit",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/easy-swoole/atomic-limit.git",
+                "reference": "7a2a4d3d09c1db1845512b2049af3a2b33c64b77"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/easy-swoole/atomic-limit/zipball/7a2a4d3d09c1db1845512b2049af3a2b33c64b77",
+                "reference": "7a2a4d3d09c1db1845512b2049af3a2b33c64b77",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "easyswoole/component": "^2.0",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "easyswoole/swoole-ide-helper": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EasySwoole\\AtomicLimit\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "YF",
+                    "email": "291323003@qq.com"
+                }
+            ],
+            "description": "An efficient swoole framework",
+            "homepage": "https://www.easyswoole.com/",
+            "keywords": [
+                "async",
+                "easyswoole",
+                "framework",
+                "swoole"
+            ],
+            "support": {
+                "issues": "https://github.com/easy-swoole/atomic-limit/issues",
+                "source": "https://github.com/easy-swoole/atomic-limit/tree/2.0.0"
+            },
+            "time": "2020-12-15T14:14:48+00:00"
         },
         {
             "name": "easyswoole/bridge",
@@ -2538,6 +2595,62 @@
             "time": "2023-04-04T09:50:52+00:00"
         },
         {
+            "name": "psr/log",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
+            },
+            "time": "2021-05-03T11:20:27+00:00"
+        },
+        {
             "name": "sebastian/cli-parser",
             "version": "1.0.2",
             "source": {
@@ -3676,6 +3789,110 @@
                 }
             ],
             "time": "2025-11-17T20:03:58+00:00"
+        },
+        {
+            "name": "yurunsoft/nacos-php",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yurunsoft/nacos-php.git",
+                "reference": "894e5d9e1b26923483999c1a8e1d7528f4717918"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Yurunsoft/nacos-php/zipball/894e5d9e1b26923483999c1a8e1d7528f4717918",
+                "reference": "894e5d9e1b26923483999c1a8e1d7528f4717918",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.4",
+                "psr/log": "^1.0|^2.0|^3.0",
+                "yurunsoft/yurun-http": "^4.3|^5.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.8",
+                "phpunit/phpunit": "^9.5",
+                "swoole/ide-helper": "^4.8"
+            },
+            "suggest": {
+                "monolog/monolog": "Support log"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yurun\\Nacos\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Yurun",
+                    "email": "admin@yurunsoft.com"
+                }
+            ],
+            "description": "Nacos PHP client, which also supports Swoole Coroutine",
+            "support": {
+                "issues": "https://github.com/Yurunsoft/nacos-php/issues",
+                "source": "https://github.com/Yurunsoft/nacos-php/tree/v1.0.5"
+            },
+            "time": "2024-07-04T10:24:28+00:00"
+        },
+        {
+            "name": "yurunsoft/yurun-http",
+            "version": "v5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yurunsoft/YurunHttp.git",
+                "reference": "df62abcb81166f4fa1a1eca426cd0b6792b0edce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Yurunsoft/YurunHttp/zipball/df62abcb81166f4fa1a1eca426cd0b6792b0edce",
+                "reference": "df62abcb81166f4fa1a1eca426cd0b6792b0edce",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1",
+                "psr/http-message": "~1.0|~2.0",
+                "psr/log": "~1.0|~2.0|~3.0"
+            },
+            "require-dev": {
+                "monolog/monolog": "*",
+                "phpunit/phpunit": ">=4 <9.7",
+                "swoole/ide-helper": "^4.5",
+                "workerman/workerman": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yurun\\Util\\": "./src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "YurunHttp 是开源的 PHP HTTP 类库，支持链式操作，简单易用。支持 Curl、Swoole，支持 Http、Http2、WebSocket！",
+            "support": {
+                "issues": "https://github.com/Yurunsoft/YurunHttp/issues",
+                "source": "https://github.com/Yurunsoft/YurunHttp/tree/v5.0.1"
+            },
+            "time": "2024-01-17T02:20:44+00:00"
         }
     ],
     "packages-dev": [],

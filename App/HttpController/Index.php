@@ -4,6 +4,7 @@
 namespace App\HttpController;
 
 
+use App\Rpc\NacosManager;
 use EasySwoole\EasySwoole\Config;
 use EasySwoole\Http\AbstractInterface\Controller;
 use EasySwoole\Redis\Config\RedisConfig;
@@ -17,9 +18,10 @@ class Index extends Controller
 
     public function index()
     {
-        $arr       = Config::getInstance()->getConf('REDIS');
-        $redisPool = new RedisPool(new RedisConfig($arr));
-        $manager   = new RedisManager($redisPool);
+        // $arr       = Config::getInstance()->getConf('REDIS');
+        // $redisPool = new RedisPool(new RedisConfig($arr));
+        // $manager   = new RedisManager($redisPool);
+        $manager   = new NacosManager();
         $config    = new \EasySwoole\Rpc\Config();
         $config->setNodeManager($manager);
         $rpc    = new Rpc($config);
