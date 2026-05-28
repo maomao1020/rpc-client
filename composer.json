@@ -3,7 +3,8 @@
         "easyswoole/easyswoole": "^3.5",
         "easyswoole/rpc": "4.x",
         "easyswoole/atomic-limit": "^2.0",
-        "yurunsoft/nacos-php": "^1.0"
+        "yurunsoft/nacos-php": "^1.0",
+        "swoole/ide-helper": "^6.0"
     },
     "autoload": {
         "psr-4": {

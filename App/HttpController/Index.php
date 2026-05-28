@@ -21,19 +21,24 @@ class Index extends Controller
         // $arr       = Config::getInstance()->getConf('REDIS');
         // $redisPool = new RedisPool(new RedisConfig($arr));
         // $manager   = new RedisManager($redisPool);
-        $manager   = new NacosManager();
-        $config    = new \EasySwoole\Rpc\Config();
+        $manager = new NacosManager();
+        $config  = new \EasySwoole\Rpc\Config();
         $config->setNodeManager($manager);
         $rpc    = new Rpc($config);
         $client = $rpc->client();
-        $client->addCall('Goods', 'list', [])
-            ->setOnFail(function (Response $response) {
-                var_dump($response->getStatus());
-            })->setOnSuccess(function (Response $response) {
-                var_dump($response->toArray());
-            });
-        $client->exec();
-        $this->writeJson(200, ['msg' => 'ok']);
+        $call   = $client->addCall('Goods', 'list', []);
+        $call->setOnFail(function (Response $response) {
+            var_dump($response->getStatus());
+            throw new \Exception($response->getMsg());
+        });
+        $result = [];
+        $msg    = '';
+        $call->setOnSuccess(function (Response $response) use (&$result, &$msg) {
+            $result = $response->getResult();
+            $msg    = $response->getMsg();
+        });
+        $client->exec(2);
+        $this->writeJson(200, $result, $msg);
     }
 
     function test()

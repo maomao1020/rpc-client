@@ -48,7 +48,6 @@ class NacosManager implements NodeManagerInterface
     function getServiceNode(string $serviceName, ?string $version = null): ?ServiceNode
     {
         $list = $this->getServiceNodes($serviceName, $version);
-        var_dump($list);
         return Random::arrayRandOne($list);
     }
 
