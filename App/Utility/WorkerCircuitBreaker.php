@@ -56,7 +56,7 @@ class WorkerCircuitBreaker
             return $result;
         } catch (\Throwable $e) {
             $this->onFailure($serverName, $e->getMessage());
-            return $fallback;
+            return $fallback();
         }
     }
 

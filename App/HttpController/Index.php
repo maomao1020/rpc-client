@@ -5,6 +5,7 @@ namespace App\HttpController;
 
 
 use App\Rpc\NacosManager;
+use App\Utility\WorkerCircuitBreaker;
 use EasySwoole\EasySwoole\Config;
 use EasySwoole\Http\AbstractInterface\Controller;
 use EasySwoole\Redis\Config\RedisConfig;
@@ -26,19 +27,47 @@ class Index extends Controller
         $config->setNodeManager($manager);
         $rpc    = new Rpc($config);
         $client = $rpc->client();
-        $call   = $client->addCall('Goods', 'list', []);
-        $call->setOnFail(function (Response $response) {
-            var_dump($response->getStatus());
-            throw new \Exception($response->getMsg());
+        // $call   = $client->addCall('Goods', 'list', []);
+        // $call->setOnFail(function (Response $response) {
+        //     var_dump($response->getStatus());
+        //     throw new \Exception($response->getMsg());
+        // });
+        // $result = [];
+        // $msg    = '';
+        // $call->setOnSuccess(function (Response $response) use (&$result, &$msg) {
+        //     $result = $response->getResult();
+        //     $msg    = $response->getMsg();
+        // });
+        $result = WorkerCircuitBreaker::getInstance()->call('Goods', function () use ($client) {
+            $call = $client->addCall('Goods', 'List', []);
+            $call->setOnFail(function (Response $response) {
+                throw new \Exception($response->getMsg());
+            });
+            $output = [];
+            $call->setOnSuccess(function (Response $response) use (&$output) {
+                $output = $response->getResult();
+            });
+            $client->exec(2);
+            return $output;
+        }, function () {
+            return ['code' => 503, 'msg' => '系统繁忙，请稍后再试（来自本地熔断降级）'];
         });
-        $result = [];
-        $msg    = '';
-        $call->setOnSuccess(function (Response $response) use (&$result, &$msg) {
-            $result = $response->getResult();
-            $msg    = $response->getMsg();
+        $order = WorkerCircuitBreaker::getInstance()->call('Order', function () use ($client) {
+            $call = $client->addCall('Order', 'List', []);
+            $call->setOnFail(function (Response $response) {
+                throw new \Exception($response->getMsg());
+            });
+            $output = [];
+            $call->setOnSuccess(function (Response $response) use (&$output) {
+                $output = $response->getResult();
+            });
+            $client->exec(2);
+            return $output;
+        }, function () {
+            return ['code' => 503, 'msg' => '系统繁忙，请稍后再试（来自本地熔断降级）'];
         });
-        $client->exec(2);
-        $this->writeJson(200, $result, $msg);
+        var_dump($order);
+        $this->writeJson(200, $result, '');
     }
 
     function test()
